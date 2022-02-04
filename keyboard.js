@@ -96,7 +96,14 @@ var keyboard = (
           this.boardSetting(this.case);
           break;
         case 'Space':
-          this.$input.value += " ";
+          if(this.$insertIndex === this.$input.value.length || this.$insertIndex === undefined)
+          {
+            this.$input.value += " ";
+          }
+          else{
+            this.$input.value = this.$input.value.insertAt(this.$insertIndex," ");
+            this.$insertIndex++;
+          }
           break;
         default:
           var text = document.createElement("p");
