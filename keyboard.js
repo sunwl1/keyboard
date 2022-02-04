@@ -111,6 +111,8 @@ var keyboard = (
           }
           break;
       }
+      $(this.$input).prop("selectionStart",this.$insertIndex);
+      $(this.$input).prop("selectionEnd",this.$insertIndex);
       $(this.$input).focus();
     }
 
