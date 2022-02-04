@@ -5,6 +5,15 @@ var keyboard = (
       String.prototype.insertAt = function(index,str){
         return this.slice(0,index) + str + this.slice(index)
       }
+      String.prototype.removeAt = function(index){
+        if(index >= 0)
+        {
+          return this.slice(0,index - 1) + this.slice(index);
+        }
+        else{
+          return this.slice(0,index) + this.slice(index);
+        }
+      }
     }
      
     keyboard.prototype.init = function ($container) {
@@ -71,7 +80,14 @@ var keyboard = (
     keyboard.prototype.keyInput = function(value){
       switch (value) {
         case 'Back':
-          this.$input.value = this.$input.value.slice(0, -1);
+          if(this.$insertIndex === this.$input.value.length || this.$insertIndex === undefined)
+          {
+            this.$input.value = this.$input.value.slice(0, -1);
+          }
+          else{
+            this.$input.value = this.$input.value.removeAt(this.$insertIndex);
+            this.$insertIndex--;
+          }
           break;
         case 'Send':
           this.send(this.$input.value);
@@ -91,9 +107,11 @@ var keyboard = (
           }
           else{
             this.$input.value = this.$input.value.insertAt(this.$insertIndex,$(text).text());
+            this.$insertIndex++;
           }
           break;
       }
+      $(this.$input).focus();
     }
 
     keyboard.prototype.send = function(value){
