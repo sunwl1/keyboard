@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <title>Template</title>
+    <link rel="stylesheet" href="docs/base.css">
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        blockquote {
+            padding: 15px 20px;
+            margin: 0 0 21px;
+            border-left: 5px solid #eee;
+            background-color: #f8f8f8;
+        }
+
+        blockquote p {
+            margin-bottom: 1.1em;
+            font-size: 18.75px;
+            font-weight: 300;
+            line-height: 1.25;
+        }
+
+        blockquote p:last-child {
+            margin-bottom: 0
+        }
+
+        blockquote ul:last-child,
+        blockquote ol:last-child {
+            margin-bottom: 0
+        }
+
+        blockquote small,
+        blockquote .small {
+            display: block;
+            line-height: 1.45;
+            color: #999
+        }
+
+        blockquote small:before,
+        blockquote .small:before {
+            content: '\2014 \00A0'
+        }
+
+        blockquote.pull-right {
+            padding-right: 15px;
+            padding-left: 0;
+            border-right: 5px solid #eee;
+            border-left: 0
+        }
+
+        blockquote.pull-right p,
+        blockquote.pull-right small,
+        blockquote.pull-right .small {
+            text-align: right
+        }
+
+        blockquote.pull-right small:before,
+        blockquote.pull-right .small:before {
+            content: ''
+        }
+
+        blockquote.pull-right small:after,
+        blockquote.pull-right .small:after {
+            content: '\00A0 \2014'
+        }
+
+        blockquote:before,
+        blockquote:after {
+            content: ""
+        }
+
+        code,
+        kbd,
+        pre,
+        samp {
+            font-family: "Source Code Pro", monospace
+        }
+
+        code {
+            padding: 2px 4px;
+            font-size: 90%;
+            color: #000;
+            background-color: rgba(0, 0, 0, 0.04);
+            white-space: nowrap;
+            border-radius: 4px
+        }
+
+        pre {
+            display: block;
+            padding: 10px;
+            margin: 0 0 10.5px;
+            font-size: 14px;
+            line-height: 1.45;
+            word-break: break-all;
+            word-wrap: break-word;
+            color: #333;
+            background-color: #f8f8f8;
+            border: 1px solid #eee;
+            border-radius: 4px
+        }
+
+        pre code {
+            padding: 0;
+            font-size: inherit;
+            color: inherit;
+            white-space: pre-wrap;
+            background-color: transparent;
+            border-radius: 0
+        }
+
+        .pre-scrollable {
+            max-height: 340px;
+            overflow-y: scroll
+        }
+
+        .temp-cont {
+            width: 1080px;
+            margin: 0 0 50px;
+        }
+
+        .temp-title-area {
+            margin: 0 0 20px;
+            padding: 5px 10px;
+            font-size: 20px;
+            font-weight: 500;
+            color: #fff;
+            background-color: #888;
+        }
+
+        .temp-stitle-area {
+            font-size: 18px;
+            font-weight: 500;
+            text-indent: 10px;
+        }
+
+        .checkbox-warp {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .btn-code-copy {
+            overflow: hidden;
+            width: 30px;
+            height: 25px;
+            margin-left: 20px;
+            font-size: 12px;
+            color: #fff;
+            background: #c3bebe;
+            padding: 4px;
+            -webkit-transition: all .3s ease;
+            -moz-transition: all .3s ease;
+            -ms-transition: all .3s ease;
+            -o-transition: all .3s ease;
+            transition: all .3s ease;
+        }
+
+        .btn-code-copy:hover {
+            width: 100px;
+            padding: 4px 12px;
+            background: #333;
+        }
+
+        .btn-code-copy i {
+            visibility: hidden;
+            opacity: 0;
+        }
+
+        .btn-code-copy:hover i {
+            visibility: visible;
+            opacity: 1;
+            -webkit-transition: all .7s ease;
+            -moz-transition: all .7s ease;
+            -ms-transition: all .7s ease;
+            -o-transition: all .7s ease;
+            transition: all .7s ease;
+        }
+
+        .contents {
+            margin: 0 auto;
+            overflow-x: visible
+        }
+
+        .btn-top {
+            z-index: 20;
+            position: fixed;
+            bottom: 46px;
+            right: 50%;
+            margin-right: -45%;
+        }
+
+        .btn-top a {
+            display: block;
+            width: 66px;
+            height: 66px;
+            font-size: 30px;
+            border-radius: 50%;
+            border: 1px solid;
+        }
+
+        .btn-top .glyphicon {
+            position: absolute;
+            top: 50%;
+            left: 53%;
+            -webkit-transform: translate(-50%, -50%);
+            -moz-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            -o-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+        }
+
+        .code-copyview {
+            z-index: 1000;
+            position: fixed;
+            bottom: 0;
+            right: -100%;
+            width: 700px;
+            -webkit-transition: all 0.5s ease;
+            -moz-transition: all 0.5s ease;
+            -ms-transition: all 0.5s ease;
+            -o-transition: all 0.5s ease;
+            transition: all 0.5s ease;
+        }
+
+        .code-copyview.active {
+            right: 0
+        }
+
+        .code-copyview>.close {
+            opacity: 0.5;
+            font-size: 30px;
+            background-color: #ff0000;
+        }
+        .top-cnt .tit{
+            padding-top:0;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <header></header>
+          <div class="contents" style="overflow:visible">
+              <section class="container-fluid">
+                <br>
+                <blockquote>
+                    <p>note : <br>
+                        - 여기부터 컨텐츠 내용 삽입 부분 <br>
+                        - 화면사이즈 가로*세로 1024px / 1280px<br>
+                    </p>
+                </blockquote>
+                <br>
+                <div class="temp-cont">
+                    <p class="temp-title-area">1. gnb 제작</p>
+                    <li>이전, 다음, 활성화/비활성화 추가</li>
+                    <div class="code-container">
+                      <div style="position: absolute; top: 240px;">
+                        <nav class="gnb is-active" style="position: absolute;"></nav>
+                      </div>
+                      <div style="margin-top: 400px;">
+                        <button id="prev">이전</button>
+                        <button id="next">다음</button>
+                        <button id="active">활성화/비활성화</button>
+                      </div>
+                    </div>
+                </div>
+                <div class="temp-cont">
+                    <p class="temp-title-area">2. 키보드 제작</p>
+                    <div style="margin: 20px;">
+                      <div class="code-container">
+                        <textarea type="text" class="board-input" autofocus="autofocus"></textarea>
+                        <div class="board"></div>
+                      </div>
+                    </div>
+                </div>
+                <div class="temp-cont">
+                    <p class="temp-title-area">3. 하단바 제작</p>
+                    <div style="margin: 20px;">
+                      <div class="code-container" style="position: relative; overflow: hidden; width: 1104px; height: 900px;">
+                        <nav class="nav" style="position: absolute;"></nav>
+                      </div>
+                    </div>
+                </div>
+              </section>
+          </div>
+        <div class="btn-top">
+            <a href="#header"><span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span></a>
+        </div>
+        <div class="code-copyview clearfix">
+            <button type="button" class="close" style="margin-right:20px;"><span aria-hidden="true">×</span></button>
+            <textarea id="codeTextView" class="form-control resize-v" rows="10" placeholder="카피한 코드가 여기로 옮겨집니다."></textarea>
+        </div>
+    </div>
+    <script src="docs/jquery-1.9.1.min.js"></script>
+    <script src="gnb/gnb.js"></script>
+    <script src="nav/nav.js"></script>
+    <script src="keyboard/keyboard.js"></script>
+    <script>
+      var gnb = new Gnb($('.gnb'));
+
+      var _keyboard = new keyboard($('.board'));
+      _keyboard.setInput($('.board-input'));
+
+      var index = 0;
+      gnb.setProgress(index);
+      prev.addEventListener('click',function(){ 
+        if(index <= 0) return;
+        index--;
+        gnb.setProgress(index);
+      })
+      next.addEventListener('click',function(){ 
+        if(index >= 8) return;
+        index++;
+        gnb.setProgress(index);
+      })
+      active.addEventListener('click',function(){ 
+        $('.gnb').toggleClass('is-active');
+      })
+
+    var nav = new Nav($('.nav'));
+    nav.usedSlot(1);
+    nav.useCompleteSlot(0);
+    </script>
+</body>
+
+</html>

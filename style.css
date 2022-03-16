@@ -1,3 +1,160 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* gnb -------------------------------------------------------------------------------------------- */
+
+.gnb{
+  position: fixed;
+  top: -1024px;
+  left: 0;
+  width: 1024px;
+  height: 350px;
+  border-radius: 0 0 40px 40px;
+  box-shadow: 8px 8px 30px 0 rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+  transition: 1s;
+}
+
+.gnb.is-active{
+  top: 0px;
+}
+
+.progress-tit{
+  font-size: 32px;
+  margin: 52px 0 69px 70px;
+  line-height: 46px;
+  font-weight: bold;
+  color: #333;
+}
+.progress-tit span{
+  color: #3bbeb4;
+}
+.progress-content{
+  height: 12px;
+}
+.progress-content li{
+  position: relative;
+  float: left;
+  width: 102px;
+  height: 100%;
+}
+.progress-content li img{
+  position: absolute;
+  width: 56px;
+  height: 56px;
+  right: -28px;
+  top: -22px;
+  z-index: 1;
+}
+.progress-content li img.ic-normal{
+  width: 22px;
+  height: 22px;
+  right: -10px;
+  top: -5px;
+}
+.progress-content li span{
+  position: absolute;
+  width: 150px;
+  height: 20px;
+  text-align: center;
+  right: -75px;
+  bottom: -44px;
+  font-weight: bold;
+  font-size: 20px;
+  color: #333;
+}
+.progress-content li span.is-ready{
+  bottom: -54px;
+}
+.progress-content li.is-active span{
+  bottom: -74px;
+}
+.progress-content li span.is-check{
+  bottom: -50px;
+}
+.progress-content .progress-end{
+  position: relative;
+  width: 206px;
+  height: 100%;
+}
+.progress-content .progress-end.is-active::before{
+  background-color: #3bbeb4;
+}
+
+.progress-content li::before{
+  position: absolute;
+  content: '';
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 12px;
+  background-color: #f0f0f0;
+}
+.progress-content li.is-active::before{
+  background-color: #3bbeb4;
+}
+
+.gnb .arrow-content{
+  width: 80px;
+  height: 80px;
+  margin: auto;
+  margin-top: 85px;
+  display: block;
+}
+
+.gnb .progress-character{
+  position: absolute;
+  width: 148px;
+  height: 158px;
+  top: 82px;
+  left: 28px;
+  z-index: 2;
+}
+
+/* gnb -------------------------------------------------------------------------------------------- */
+/* board ------------------------------------------------------------------------------------------ */
+
 .board-input{
   width: 655px;
   height: 50px;
@@ -16,7 +173,7 @@
   background-color: #666;
 }
 
-.keyboard .send{
+.keyboard .enter{
   position: absolute;
   width: 110px;
   height: 80px;
@@ -25,3 +182,104 @@
 .keyboard .space{
   width: 275px;
 }
+
+/* board ------------------------------------------------------------------------------------------ */
+/* nav -------------------------------------------------------------------------------------------- */
+.nav{
+  width: 1024px;
+  height: 822px;
+  box-shadow: 0 0 40px 0 rgba(32, 35, 34, 0.14);
+  background-color: #fff;
+  position: fixed;
+  bottom: -652px;
+  transition: 0.5s;
+}
+
+.nav.is-active{
+  bottom: 0;
+}
+
+.nav .nav-icon{
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  top: -50px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+  border-radius: 50%;
+  box-shadow: 0 0 40px 2px rgba(32, 35, 34, 0.16);
+  background-color: #fff;
+}
+
+.nav .nav-title{
+  font-size: 32px;
+  font-weight: bold;
+  text-align: center;
+  color: #333;
+  margin: 100px 0 38px 0;
+  transition: 0.5s;
+}
+
+.nav.is-active .nav-title{
+  font-size: 52px;
+  margin: 110px 0 40px 0;
+}
+
+.nav .slot-content>div[class^="slot-"]{
+  position: relative;
+  width: 792px;
+  height: 122px;
+  box-shadow: 0 0 20px 0 rgba(81, 94, 94, 0.2);
+  background-color: #fff;
+  margin: 0 auto 19px auto;
+}
+
+.nav .slot-content>div[class^="slot-"]:first-child{
+  border-radius: 40px 40px 0 0;
+}
+
+.nav .slot-content>div[class^="slot-"]:last-child{
+  border-radius: 0 0 40px 40px;
+}
+
+.nav .slot-content>div[class^="slot-"] *[class^="slot-"]{
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.nav .slot-content>div[class^="slot-"] .slot-num{
+  font-size: 34px;
+  left: 90px;
+  color: #3bbeb4;
+}
+
+.nav .slot-content>div[class^="slot-"].is-active .slot-num{
+  font-size: 34px;
+  color: #f5615f;
+}
+
+.nav .slot-content>div[class^="slot-"] .slot-text{
+  font-size: 28px;
+  left: 138px;
+  color: #333333;
+}
+
+.nav .slot-content>div[class^="slot-"] .slot-used{
+  font-size: 28px;
+  right: 74px;
+  width: 115px;
+  text-align: center;
+  color: #3bbeb4;
+}
+
+.nav .slot-content>div[class^="slot-"].is-active .slot-used{
+  font-size: 28px;
+  color: #f5615f;
+}
+
+/* nav -------------------------------------------------------------------------------------------- */
